@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>課堂作業05</title>
+	<style>
+		p {
+			margin: 5px;}
+		h4 {
+			color: hotpink;
+		}
+		div {
+			color:darkblue;}
+        h3{
+            color:gold;}
+        
+	</style>
+</head>
+	<body>
+        <script> 
+        var myName="黃湘";
+        var myAge=21;
+        var myHeight=158;
+        var myWeitht=44;
+        document.write("1.我是B3B34，黃湘");
+        document.write("<p><h4>2.大家好!我最喜歡吃的水果是草莓</h4></p>");  
+        document.write("<p>3.我是"+myName+"今年"+myAge+"歲</p>");
+        document.write("<p>4.我的身高為"+myHeight+"公分，我的體重為"+myWeitht+"公斤</p>");
+        var BMI = 17.6;
+        document.write("<p>5.所以我的BMI為17.6</p>");
+        var countI=0
+        for(i=1; i<=100;i++){countI +=i;}
+        document.write("<p>6.從1加到100的總合為"+(countI)+"</p>");
+        var countI=0
+        for(i=1; i<=10;i++){countI +=i;}
+        document.write("<p>7.從1加到10的總合為"+(countI)+"</p>");
+        var countI=0
+        for(i=1; i<=100;i++){countI +=i;}
+        document.write("<p>8.從1加到100的總合為"+(countI)+"</p>");
+        var countI=0
+        for(i=1; i<=1000;i++){countI +=i;}
+        document.write("<p>9.從1加到1000的總合為"+(countI)+"</p>");
+        var countI=0
+        for(i=1; i<=10000;i++){countI +=i;}
+        document.write("<p>10.從1加到10000的總合為"+(countI)+"</p>");
+            
+        document.write("<p><h3>九九乘法表</h3></p>");
+        document.write("<table cell spacing ='0'>");
+        for(var i=1;i<=9;i++){
+            document.write("<tr>");
+        for(var j=1;j<=i;j++){
+            document.write("<td style='border=1px soild;'>"+j+"*"+i+"="+j*i+"</td>");
+        }
+        document.write("</tr>");
+        }
+        document.write("</table>");
+        </script>
+		
+       
+	</body>
+</html>
