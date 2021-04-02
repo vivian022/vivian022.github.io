@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>家庭作業04</title>
+	<style>
+		p {
+			margin: 5px;}
+		h4 {
+			color: hotpink;
+		}
+		div {
+			color:darkblue;}
+        h3{
+            color:gold;}
+        td{
+            border: 1px solid black;
+            padding-left: 20px ;
+        }
+  
+	</style>
+</head>
+	<body>
+        <script> 
+        document.write("<table align='center'>");
+        
+
+        document.write("<p><h3>九九乘法表</h3></p>");
+        document.write('<ul class="table">');
+        document.write("<table cell spacing ='0'>");
+        for(var i=1;i<=9;i++){
+            document.write("<tr>");
+        for(var j=1;j<=9;j++){
+            document.write("<td style='border=1px soild;'>"+j+"*"+i+"="+j*i+"</td>");
+        }
+        document.write("</tr>");
+        }
+        document.write("</table>");
+            
+        </script>
+		
+       
+	</body>
+</html>
