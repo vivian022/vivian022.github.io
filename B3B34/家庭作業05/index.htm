@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>課堂作業06</title>
+	<style>
+		div {
+			color:darkblue;
+            margin:5px
+		}
+		h4 {
+			color: palevioletred;
+		}
+        table{
+            border-color:darkblue
+        }
+        td{
+            border: 1px solid black;
+            padding-left:20px;
+        }
+        tr{
+            text-align: center;
+        }
+	</style>
+</head>
+	<body>
+        <form id="form01">
+        姓名:<input type="text" name="name01" value="黃湘"><br>
+        收件住址:<input type="text" name="address01" value="台北市北投區石牌路一段38號四樓之一"><br>
+        電話:<input type="tel" name="tel01" value="0975239686"><br>
+        電子郵件:<input type="email" name="email01" value="vivianhuang20000214@gmail.com"><br>
+        指定送貨日期:<input type="date" name="date01"><br>
+        衣服種類:<br>
+        <input type="radio" name="clothes" id="clothes01" value="絲絨居家針織開襟衫">絲絨居家針織開襟衫 1080元<br>
+        <input type="radio" name="clothes" id="clothes02" value="絲絨居家針織短褲">絲絨居家針織短褲 680元<br>
+        <input type="radio" name="clothes" id="clothes03" value="小V挖領短版上衣">小V挖領短版上衣 880元<br>
+        <input type="radio" name="clothes" id="clothes04" value="綁帶西裝八分褲">綁帶西裝八分褲 1680元<br>
+        <input type="radio" name="clothes" id="clothes05" value="皮革口袋針織外套">皮革口袋針織外套 1680元<br>
+        <input type="radio" name="clothes" id="clothes06" value="側開衩中長裙">側開衩中長裙 1080元<br>
+        </form>
+        
+        <button onclick="shoppingInfo()"><h4>結帳</h4></button>
+        <div id="demo"></div>
+        <script>
+        function shoppingInfo(){
+        var x= document.getElementById("form01");
+        var item="";
+        var price=0;
+        var text="<h4>您的購物資訊如下:</h4>";
+        var i;
+        text += "<table border = '1' width = '90%' cellspacing = '0' cellpadding = '0'>";
+            
+        for (i=0;i<5;i++){
+        text += "<tr>";
+        switch (i){
+            case 0:
+               item="姓名:";
+               break;
+            case 1:
+               item="收件住址:";
+               break;      
+            case 2:
+               item="電話:";
+               break; 
+            case 3:
+               item="電子郵件:";
+               break; 
+            case 4:
+               item="指定送貨日期:";
+               break; 
+        }
+            
+            text += "<td>" + item + "</td>" + "<td>" + x.elements[i].value + "</td>";
+            text += "</tr>";
+        }
+            for (i=5; i<=10 ;i++){
+            if(x.elements[i].checked == true){
+            switch(i){
+                case 5:price=1080; break;
+                case 6:price=680; break;
+                case 7:price=880; break;
+                case 8:price=1680; break;
+                case 9:price=1680; break;
+                case 10:price=1080; break;
+            }
+            text += "<tr><td>衣服種類: </td>" + "<td>" + x.elements[i].value + "</td></tr>";
+            text += "<tr><td>價格合計: </td>" + "<td>" + price + "元</td></tr>";
+        }
+            text += "</tr>";
+    }
+            text += "</table>";
+            
+            document.getElementById("demo").innerHTML=text;
+    }
+        </script>
+	</body>
+</html>
