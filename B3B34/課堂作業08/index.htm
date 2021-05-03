@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+		<title>課堂作業08</title>
+    
+	</head>
+    <style type ="text/css">
+		div {
+			 display: flex;
+             flex-direction:column;
+             align-items:center;
+		}
+        
+		input {
+			 margin-top: 10px;
+		}
+        
+        textarea{
+            margin-top: 15px;
+            width: 60%;
+        }
+        
+        span{
+            color:red;
+        }
+	</style>
+
+	<body>
+        <h3 style="color:blue; text-align: center">
+            開啟檔案後，字串搜尋
+        </h3>
+        <div>
+            <input type= "file">
+            <textarea cols="20" rows="15"></textarea>
+        </div>
+        <div id="demo"></div>
+    <form id="form01">
+        輸入文字字串: <input typr="text" name="query01" value="嘆息"><br>
+        </form>	
+    <script>
+             var x = document.getElementById("form01");
+             let input = document.querySelector('input')
+             let textarea = document.querySelector('textarea');
+             var lineNo = 0;
+             var text = "";
+             input.addEventListener('change', () => {
+                 var files = input.files;
+                 if (files.length == 0)return;
+                 const file = files[0];
+                 let reader = new FileReader();
+                 reader.onload = (e) => {
+                     const file = e.target.result;
+                     const lines = file.split(/\r\n|\n/);
+                     textarea.value = lines.join('\n');
+                     var reg = new RegExp(x.elements[0].value);
+                     lineNo = textarea.value.search(reg);
+                     text += "所搜尋的字串:「" + reg + "」出現在第" + lineNo + "個字<br>";
+                     text += "...";
+                     for(i= lineNo-10; i <= lineNo + 15; i++){
+                         text += textarea.value[i];
+                     }
+                         text += "...<br>";
+                         document.getElementById("demo").innerHTML = text;
+                     };
+             reader.onerror = (e) => alert(e.target.error.name);
+             reader.readAsText(file);
+             });
+    </script>
+</body>
+</html>
