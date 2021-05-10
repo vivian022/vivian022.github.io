@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+		<title>課堂作業09</title>
+    
+	</head>
+    <style type ="text/css">
+		div {
+			 display: flex;
+             flex-direction:column;
+             align-items:center;
+		}
+        
+		input {
+			 margin-top: 10px;
+		}
+        
+        textarea{
+            margin-top: 15px;
+            width: 60%;
+        }
+        
+        span{
+            color:red;
+        }
+	</style>
+
+	<body>
+        <h3 style="color:blue; text-align: center">
+            開啟檔案後，字串搜尋
+        </h3>
+        <div>
+            <input type= "file">
+            <textarea cols="20" rows="15"></textarea>
+        </div>
+        <div id="demo"></div>
+        <form id="form01">
+        輸入字串: <input type="text" name="query01" value="成績"><br>
+        </form>	
+        
+    <script>
+             var x = document.getElementById("form01");
+             let input = document.querySelector('input');
+             let textarea = document.querySelector('textarea');
+             var lineNo = 0;
+             var text = "";
+             var reg = /考核/g;
+             var m1;
+             var newString="";
+             function printReg(lineNo, newString){
+                 text += "...";
+                 for(i = lineNo-15; i <= lineNo + 20; i++){
+                    if ((i>=lineNo) && (i<= lineNo + reg.length -1)){
+                        text += newString[i];
+                    } else {
+                        text += newString[i];
+                    }
+                 }
+                 text += "...<br>";       
+                 }
+             input.addEventListener('change', () => {
+                 var files = input.files;
+                 if (files.length == 0)return;
+                 const file = files[0];
+                 let reader = new FileReader();
+                 reader.onload = (e) => {
+                     const file = e.target.result;
+                     const lines = file.split(/\r\n|\n/);
+                     textarea.value = lines.join('\n');
+                     newString = textarea.value.substr(reg.lastIndex);
+                     while ((m1= reg.exec(newString)) !== null){
+                     lineNo = newString.search(reg);
+                     text += "<span>「" + m1[0] + "」" + "在第" + newString.search(reg) + "個字</span>";
+                     printReg(lineNo, newString);
+                     text += "<br>";
+                     newString = newString.substr(reg.lastIndex);
+                     }
+                         document.getElementById("demo").innerHTML = text;
+                     };
+             reader.onerror = (e) => alert(e.target.error.name);
+             reader.readAsText(file);
+             });
+    </script>
+</body>
+</html>
